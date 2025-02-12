@@ -1,3 +1,4 @@
+---
 repos:
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.92.0
@@ -7,16 +8,6 @@ repos:
         args:
           - --args=--skip-dirs=**/.cache
           - --args=--severity HIGH,CRITICAL
-      # - id: terraform_tflint
-      #   args:
-      #     - --args=--disable-rule=terraform_required_version
-      #     - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-      #     - --hook-config=--delegate-chdir
-
-      # - id: terraform_validate
-      #   exclude: "^[\\w.-]+$"
-      #   args:
-      #     - --hook-config=--retry-once-with-cleanup=true
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.33.0
