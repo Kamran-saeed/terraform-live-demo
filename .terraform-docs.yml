@@ -1,0 +1,11 @@
+---
+formatter: markdown
+sections:
+  hide:
+    - data-sources
+    - modules
+    - providers
+    - resources
+settings:
+  anchor: false
+  html: true
