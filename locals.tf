@@ -10,8 +10,18 @@ locals {
   azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   vpc_name        = "${local.env}-${local.service_name}-vpc"
 
+  # VPC Endpoints Config
+  vpce_sg_port_map = {
+    tcp = {
+      from_port   = 0
+      to_port     = 0
+      protocol    = "-1"
+      description = "Allow traffic for vpc endpoints"
+    }
+  }
+
   # Agent Config
-  agent_pool_organizations = ["tf_testing_org"]
+  agent_pool_organizations = ["EinfachCloud"]
   asg_min_count            = 1
   asg_desired_count        = 1
   asg_max_count            = 3

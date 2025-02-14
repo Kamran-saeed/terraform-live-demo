@@ -14,6 +14,22 @@ module "vpc" {
 }
 
 # ========================================= #
+# VPC Endpoints
+# ========================================= #
+module "vpc_endpoints" {
+  source = "github.com/Kamran-saeed/terraform-aws-vpc-endp"
+
+  service_name        = local.service_name
+  env                 = local.env
+  region              = local.region
+  vpc_id              = module.vpc.id
+  vpc_cidr            = module.vpc.cidr
+  private_rt_ids      = module.vpc.private_rt_ids
+  endpoint_subnet_ids = module.vpc.private_subnets
+  sg_port_map         = local.vpce_sg_port_map
+}
+
+# ========================================= #
 # TFC Agent
 # ========================================= #
 module "tfc-agents" {
@@ -34,7 +50,7 @@ module "tfc-agents" {
   Region                = local.region
   ImageName             = "hashicorp/tfc-agent"
   ImageVersion          = "1.15"
-  env                   = "shared"
+  env                   = local.env
   service_name          = local.service_name
   auto_update           = "patch"
   agent_pool_org_name   = each.value
