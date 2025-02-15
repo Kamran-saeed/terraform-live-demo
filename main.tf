@@ -55,3 +55,13 @@ module "tfc-agents" {
   auto_update           = "patch"
   agent_pool_org_name   = each.value
 }
+
+# ========================================= #
+# AWS IAM OIDC Provider
+# ========================================= #
+module "oidc-provider" {
+  source = "github.com/Kamran-saeed/terraform-aws-tfc-setup//modules/oidc-provider"
+
+  oidc_provider_url           = "https://app.terraform.io"
+  tfc_oidc_provider_audiences = ["aws.workload.identity"]
+}
