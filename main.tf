@@ -33,7 +33,7 @@ module "vpc_endpoints" {
 # TFC Agent
 # ========================================= #
 module "tfc-agents" {
-  source = "github.com/Kamran-saeed/terraform-aws-tfc-agent"
+  source = "github.com/Kamran-saeed/terraform-aws-tfc-setup//modules/tfc-agent"
 
   for_each = toset(local.agent_pool_organizations)
 
